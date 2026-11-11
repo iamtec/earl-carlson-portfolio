@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio Design Brief</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,200..500;1,6..72,200..500&display=swap">
+<style>
+/* Layout concept: a plain, readable working document. Single column with a narrow label rail, same type and red as the site. */
+:root {
+  --bg: #0f0807; --bg-2: #190d0b; --fg: #efe3de; --dim: #a99590; --red: #ff4a38;
+  --line: rgba(255, 74, 56, 0.2);
+  --font-display: "Newsreader", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) { --bg: #fcf8f6; --bg-2: #f3ebe7; --fg: #1d0d0a; --dim: #7a5c56; --red: #e22a1a; --line: rgba(226, 42, 26, 0.22); color-scheme: light; }
+}
+:root[data-theme="light"] { --bg: #fcf8f6; --bg-2: #f3ebe7; --fg: #1d0d0a; --dim: #7a5c56; --red: #e22a1a; --line: rgba(226, 42, 26, 0.22); color-scheme: light; }
+:root[data-theme="dark"] { --bg: #0f0807; --bg-2: #190d0b; --fg: #efe3de; --dim: #a99590; --red: #ff4a38; --line: rgba(255, 74, 56, 0.2); color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--font-display); font-size: 19px; line-height: 1.55; font-weight: 300;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 80px;
+}
+main { max-width: 980px; margin: 0 auto; }
+.mono { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
+.red { color: var(--red); } .dim { color: var(--dim); }
+h1 { margin: 10px 0 14px; font-weight: 200; font-size: clamp(48px, 9vw, 104px); line-height: 0.92; letter-spacing: -0.03em; text-wrap: balance; }
+h1 em { font-weight: 300; }
+.lede { font-size: 24px; line-height: 1.3; max-width: 36em; margin: 0 0 8px; font-weight: 200; }
+.meta { display: flex; gap: 18px; flex-wrap: wrap; padding: 12px 0 0; }
+section { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 8px 32px; padding-block: 34px; border-top: 1px solid var(--line); margin-top: 34px; }
+section > h2 { margin: 4px 0 0; font-family: var(--font-mono); font-weight: 400; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); }
+.body { min-width: 0; }
+.body > * + * { margin-top: 14px; }
+.body h3 { margin: 26px 0 0; font-weight: 400; font-size: 24px; letter-spacing: -0.01em; }
+.body h3:first-child { margin-top: 0; }
+p { margin: 0; max-width: 62ch; }
+ul { margin: 0; padding-left: 1.1em; max-width: 62ch; } li + li { margin-top: 6px; }
+.note { border-left: 2px solid var(--red); padding: 4px 0 4px 14px; }
+.note .mono { display: block; margin-bottom: 2px; }
+.swatches { display: flex; gap: 10px; flex-wrap: wrap; }
+.sw { width: 132px; border: 1px solid var(--line); }
+.sw i { display: block; height: 56px; }
+.sw span { display: block; padding: 6px 8px; font-family: var(--font-mono); font-size: 11px; line-height: 1.4; }
+.specimen { border: 1px solid var(--line); padding: 18px 18px 14px; background: var(--bg-2); }
+.specimen .big { font-size: 64px; font-weight: 200; line-height: .95; letter-spacing: -0.03em; }
+.specimen .big i { font-weight: 300; }
+.tablewrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 17px; min-width: 520px; }
+th { text-align: left; font-family: var(--font-mono); font-weight: 400; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); padding: 6px 12px 8px 0; border-bottom: 1px solid var(--line); }
+td { padding: 9px 12px 9px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+td:first-child { white-space: nowrap; }
+.pill { display: inline-block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 1px 7px; border: 1px solid var(--red); color: var(--red); }
+.pill.open { background: var(--red); color: var(--bg); }
+.btn { font: inherit; background: none; border: 1px solid var(--red); color: var(--red); padding: 4px 10px; cursor: pointer; font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+.btn:hover { background: var(--red); color: var(--bg); }
+.btn:focus-visible, a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+a { color: var(--red); }
+@media (max-width: 720px) { section { grid-template-columns: minmax(0, 1fr); } .specimen .big { font-size: 44px; } }
+</style>
+
+</head>
+<body>
+<main>
+  <div class="mono red">Design brief · v0.5 · 2026-11-11</div>
+  <h1>Earl Carlson <em>portfolio</em></h1>
+  <p class="lede">A1 (Lab report) is the direction. The site is one page with five views: the homepage and four case studies.</p>
+  <div class="meta mono dim"><span><a href="https://claude.ai/artifact/X2g3E3G8hun9Q9xPR8913J">A1 · Lab report</a></span><span><a href="https://claude.ai/artifact/1cdvR9SRsy9168ggNNqjkM">A2 · Press proof</a></span><span><a href="https://claude.ai/artifact/96hsZugEpG3JLPV7qgMcWx">A3 · Paste-up</a></span></div>
+  <div class="meta mono dim"><span><a href="https://claude.ai/artifact/JcBf2wXQZGeGtkG42bc1x7">A · Print</a></span><span><a href="https://claude.ai/artifact/4ma4HopKwccG7ZdY488eej">B · Imagine</a></span><span><a href="https://claude.ai/artifact/QRoxbreUprCifLpttgiMnV">C · Index</a></span><span><a href="https://claude.ai/artifact/JqNVBR5Lfwt6cwzXVtdziB">v0.1 (superseded)</a></span><button class="btn" id="theme-btn" type="button">Light</button></div>
+
+  <section>
+    <h2>Purpose</h2>
+    <div class="body">
+      <p>Show how Earl thinks and what his taste is, quickly. The site stands in for the portfolio deck (Slides 2 page in the pport Figma file) and should say the same things in a form people can browse and share.</p>
+      <p>The homepage has one job: make a hiring manager or collaborator want to open the case studies and want to talk.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Audience</h2>
+    <div class="body">
+      <ul>
+        <li>Design and product leaders hiring for senior design, design management, or head-of-design roles.</li>
+        <li>Peers and collaborators who already know the work and want to point someone at it.</li>
+      </ul>
+      <div class="note"><span class="mono red">Open</span>Who matters most? The tone shifts if it is mostly recruiters versus mostly peers.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>A1 build notes</h2>
+    <div class="body">
+      <ul>
+        <li><b>Portrait:</b> lighter black and white, mixed from the red channel so the red-lit photo doesn't go muddy. A better source photo is still wanted.</li>
+        <li><b>Ink blob:</b> the pointer pushes the ink away as it passes over the blob or its edges, and it springs back when the pointer leaves. Turned off for reduced motion.</li>
+        <li><b>Case studies:</b> one page. Clicking Docker swaps the homepage for the case study (link: #docker) with the same header, footer and sheet system. Back returns to Selected work.</li>
+        <li><b>Docker case study:</b> five sheets from the deck. Stabilize the core, Accounts, billing &amp; AI governance, AI tooling, Docker Hub vision, Making the vision real. Deck images are printed in grayscale and show in color on hover.</li>
+        <li><b>All case studies (v0.5):</b> Docker (#docker), DigitalOcean (#digitalocean), Facebook (#facebook), Nokia REBEL (#nokia-rebel). Each has a hero, a Challenge/Contribution/Outcome table, an outcome statistics table and a Next link that cycles through all four. Copy is from the deck, including its notes on what was a team or company result.</li>
+        <li><b>Still needed:</b> a real DigitalOcean image (marked as a stand-in on the page).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Pushing A (v0.3)</h2>
+    <div class="body">
+      <p><b>Kept in all three:</b> gray-cream paper and grain, typewriter blocks, ink-bleed grotesk, crop marks, barcode and PROD date, the career statistics table, dark work panels, and pink as the only color.</p>
+      <p><b>Dropped:</b> the pink stain ring, the centered poster stack, and the oval mark. These were the parts that read most like the Out of Office poster.</p>
+      <h3>A1 · Lab report</h3>
+      <ul>
+        <li>Leans on the Nike Sport Research Lab sheet. The name is huge and left-aligned, with a black ink blob behind the portrait, like the shape on the scan.</li>
+        <li>A report-style data row (report no., subject, sample, most recent). Pink is only a marker underline.</li>
+      </ul>
+      <h3>A2 · Press proof</h3>
+      <ul>
+        <li>The page as a two-plate print proof. A black plate with a pink plate slightly out of register on the big type and headings.</li>
+        <li>Color bars, registration targets and a slug line around the hero. A pink and black duotone portrait.</li>
+      </ul>
+      <h3>A3 · Paste-up</h3>
+      <ul>
+        <li>A photocopied paste-up: the name on taped strips, typewriter slips, and a high-contrast photocopy portrait.</li>
+        <li>Heavier toner grain and a copier-edge shadow. Pink is a highlighter.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Three options (v0.2)</h2>
+    <div class="body">
+      <h3>A · Print</h3>
+      <p><b>From:</b> the Nike Sport Research Lab scan and the Out of Office poster.</p>
+      <ul>
+        <li>Gray-cream paper with grain, black ink, and one pink stamp ring. No other color.</li>
+        <li>Typewriter blocks at the top and bottom, like the Nike header. Ink-bleed grotesk with overspray on a few letters, crop marks, an oval mark, "PROD" date and a barcode, like the Out of Office poster.</li>
+        <li>Career shown as a "Summary Career Statistics" table with bars, the way the Nike sheet shows its data. Work shown as dark slide panels.</li>
+        <li>Black-and-white portrait, high contrast, like a scan.</li>
+      </ul>
+      <h3>B · Imagine</h3>
+      <p><b>From:</b> "Let's imagine what's possible" and "Ask us for ideas".</p>
+      <ul>
+        <li>Opens on a black sky: ruler grid with tick marks on the left, stars and dust on the right, a centered serif line "Let's imagine what's next." The portrait sits faintly in the stars.</li>
+        <li>Then white with one bright red. Centered serif paragraphs with a few words in grotesk caps, and the employers set in different type styles, like the partner row.</li>
+        <li>Ends with "ASK ME FOR IDEAS" mirrored, full width, bleeding off the bottom. It flips to readable on hover.</li>
+      </ul>
+      <h3>C · Index</h3>
+      <p><b>From:</b> the clean-grid references: the project table site, the Víctor Clemente résumé page, and the label/value layout.</p>
+      <ul>
+        <li>Cool gray paper (near-black in dark mode), Source Serif throughout, small mono labels.</li>
+        <li>Large plain paragraphs up top, contact and facts in a side column, a small grayscale portrait in the header.</li>
+        <li>Work as a scannable table (company, work, role, years). Rows open in place, Docker open by default.</li>
+        <li>The grid shows only through alignment and hairlines.</li>
+      </ul>
+      <p>In all three the grid is quieter than in v0.1: faint lines in A, only in the opening sky in B, none drawn in C.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Direction (v0.1)</h2>
+    <div class="body">
+      <p>The first draft's mapping of the References notes, kept for reference.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Your note</th><th>What the site does with it</th></tr></thead>
+        <tbody>
+          <tr><td>moody, clean aesthetic, clear grid. feels like a vibe</td><td>Dark by default, warm black and one red. A 12-column grid is drawn on the page, with a toggle to hide it.</td></tr>
+          <tr><td>super playful typography</td><td>A very light serif at huge size, roman against italic, in the name, the closing line, and tile titles.</td></tr>
+          <tr><td>playful but feels like print, love the bleed</td><td>The surname runs off the right edge, the portrait bleeds off the edge of the page, and the closing line bleeds again.</td></tr>
+          <tr><td>clean grid, playful, stretches what a grid can be</td><td>Work tiles span uneven column counts and sit at different heights. Statements start on different columns.</td></tr>
+          <tr><td>marks at the bottom and top</td><td>A mono strip at the top and bottom of the page with a registration mark, name, place and coordinates.</td></tr>
+          <tr><td>big hero image in the background but it's moody</td><td>Only partly used. The red-lit portrait is the hero image, but not full-bleed behind the type yet.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Type</h2>
+    <div class="body">
+      <div class="specimen"><div class="big">Earl <i>Carlson</i></div><div class="mono dim" style="margin-top:12px">Newsreader · weight 200 display, 300 text, italic for emphasis</div></div>
+      <ul>
+        <li><b>Display and text:</b> Newsreader, optical size on. Light weights at large sizes, 300 for reading. Close to the serif already in the deck.</li>
+        <li><b>Marks and labels:</b> IBM Plex Mono, small caps-style with wide letter-spacing. Used for the top and bottom strips, dates, and tags.</li>
+        <li>Sizes are fluid (vw-based) for the name and closing line so the bleed holds at any width.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Color</h2>
+    <div class="body">
+      <div class="swatches">
+        <div class="sw"><i style="background:#0f0807"></i><span>Ink<br>#0F0807<br>dark ground</span></div>
+        <div class="sw"><i style="background:#efe3de"></i><span>Paper text<br>#EFE3DE<br>dark body text</span></div>
+        <div class="sw"><i style="background:#ff4a38"></i><span>Red<br>#FF4A38<br>on dark</span></div>
+        <div class="sw"><i style="background:#fcf8f6"></i><span>Paper<br>#FCF8F6<br>light ground</span></div>
+        <div class="sw"><i style="background:#e22a1a"></i><span>Red<br>#E22A1A<br>on light</span></div>
+      </div>
+      <p>The red comes from the deck and the red-lit portrait. It is the only accent. Hairlines and the grid use the same red at low opacity. Both themes follow the viewer's system setting, with a manual toggle.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Grid and layout</h2>
+    <div class="body">
+      <ul>
+        <li>12 columns on desktop, 4 on phones, drawn as faint vertical lines. Content snaps to them, except where the design deliberately breaks out (portrait, surname, closing line).</li>
+        <li>Hero: name, portrait, title. Then the one-line statement and facts, the career timeline, five strengths, selected work, close.</li>
+        <li>The timeline places each employer by year on a 2010–2026 axis. Gaps in the record are shown, not hidden.</li>
+        <li>Top and bottom mono strips frame the page like a printed sheet.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Content</h2>
+    <div class="body">
+      <div class="tablewrap"><table>
+        <thead><tr><th>Piece</th><th>Source</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Name, title, portrait</td><td>Deck, slide 1</td><td><span class="pill">Real</span></td></tr>
+          <tr><td>Statement and facts</td><td>Deck, slide 2</td><td><span class="pill">Real</span></td></tr>
+          <tr><td>Employers and years</td><td>Deck, slide 3</td><td><span class="pill">Real</span></td></tr>
+          <tr><td>Five strengths</td><td>Deck, slide 4</td><td><span class="pill">Real</span></td></tr>
+          <tr><td>Docker Hub summary</td><td>Deck, Docker Hub vision slide, shortened</td><td><span class="pill">Real, edited</span></td></tr>
+          <tr><td>DigitalOcean, Facebook, Nokia REBEL</td><td>Names and years only</td><td><span class="pill open">Needs copy</span></td></tr>
+          <tr><td>Work imagery</td><td>Placeholder boxes</td><td><span class="pill open">Needs images</span></td></tr>
+          <tr><td>Email and links</td><td>Not added</td><td><span class="pill open">Needs you</span></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Open questions</h2>
+    <div class="body">
+      <ul>
+        <li>Does the Docker case study name Sean Brady and the Patrick/Sam personas publicly? Fine for a private link, worth checking before the site is public.</li>
+        <li>The Facebook case shows research participants' faces. Do you have consent to show them on a public site?</li>
+        <li>Should red stay at all? A drops it for one pink stamp, C drops it entirely, B keeps it for the second half.</li>
+        <li>Option A's "AA" mark and "e.c." oval are stand-ins for a personal mark. Do you have one?</li>
+        <li>Should case studies be separate pages, or open in place on the homepage?</li>
+        <li>The tile titles for DigitalOcean, Facebook and Nokia: what is the one-line story for each?</li>
+        <li>Which contact details and links should go on the page?</li>
+        <li>Is "Draft v0.1" and the Grid toggle fine to keep in the final, or just for review?</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Changelog</h2>
+    <div class="body">
+      <p><span class="mono red">v0.5 · 2026-11-11</span>&nbsp; Case studies for DigitalOcean, Facebook and Nokia REBEL. All four panels link through.</p>
+      <p><span class="mono red">v0.4 · 2026-11-11</span>&nbsp; Picked A1. Lighter portrait, interactive ink blob, Docker case study in the same page.</p>
+      <p><span class="mono red">v0.3 · 2026-11-11</span>&nbsp; Picked A (Print). Three variations on it (Lab report, Press proof, Paste-up). Dropped the stain ring and the poster stack.</p>
+      <p><span class="mono red">v0.2 · 2026-11-11</span>&nbsp; Three options (Print, Imagine, Index), each built from specific references. Grid toned down. All deck content kept.</p>
+      <p><span class="mono red">v0.1 · 2026-11-10</span>&nbsp; First homepage and this brief. Built from the deck's first four slides, the Docker Hub slide, and the References notes.</p>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var root = document.documentElement, b = document.getElementById("theme-btn");
+  function dark() { var t = root.getAttribute("data-theme"); if (t) return t === "dark"; return !(window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches); }
+  function sync() { b.textContent = dark() ? "Light" : "Dark"; }
+  b.addEventListener("click", function () { root.setAttribute("data-theme", dark() ? "light" : "dark"); sync(); });
+  sync();
+})();
+</script>
+
+</body>
+</html>
