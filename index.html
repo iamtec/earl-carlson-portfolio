@@ -283,6 +283,33 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
 
 .contact-line a { text-decoration: none; border-bottom: 1px solid var(--ink); }
 .contact-line a:hover { background: var(--ink); color: var(--paper); }
+
+/* v0.8: snap every column to the drawn grid. Columns have no gap, so each starts exactly on its line;
+   the gutter is space on the right of each column instead. Ruled items use margin so their rules don't join up. */
+.page::before {
+  background-image:
+    repeating-linear-gradient(to right, var(--grid) 0 1px, transparent 1px calc(100% / 12)),
+    linear-gradient(to left, var(--grid) 0 1px, transparent 1px);
+}
+.typed, .grid12, .lab-grid, .lab-meta, .bring, .panels, .hub-split, .shots3, .steps { column-gap: 0; }
+.typed > *, .grid12 > *, .lab-grid > *, .lab-meta > *, .shots3 > * { padding-right: 14px; }
+.typed .c { padding-right: 0; }
+.lab-name { padding-right: 0; }
+.lab-name > span + span { padding-left: calc(100% / 8); }
+.panels > .panel { margin-right: 14px; }
+.bring > li { margin-right: clamp(20px, 4vw, 60px); }
+.hub-split > div { margin-right: clamp(20px, 3vw, 44px); }
+.steps > li { margin-right: 18px; }
+
+/* v0.8: "Carlson" wears out toward the end: s a little, o more, n most, strongest at the top of each letter */
+.lab-name .er { display: inline-block; font-style: inherit; padding: .16em .08em 0; margin: -.16em -.08em 0; }
+.lab-name .er1 { filter: url(#er1); text-shadow: 0 -1px 3px rgba(22, 21, 20, .28);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.82), #000 48%); mask-image: linear-gradient(to bottom, rgba(0,0,0,.82), #000 48%); }
+.lab-name .er2 { filter: url(#er2); text-shadow: 0 -2px 6px rgba(22, 21, 20, .38), 0 0 3px rgba(22, 21, 20, .25);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.66), #000 55%); mask-image: linear-gradient(to bottom, rgba(0,0,0,.66), #000 55%); }
+.lab-name .er3 { filter: url(#er3); text-shadow: 0 -3px 10px rgba(22, 21, 20, .5), 0 0 5px rgba(22, 21, 20, .32);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.45), #000 62%); mask-image: linear-gradient(to bottom, rgba(0,0,0,.45), #000 62%); }
+.lab-grid > .lab-meta { padding-right: 0; }
 </style>
 
 <style>[hidden]{display:none!important}img{max-width:100%}</style>
@@ -312,7 +339,7 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
     </div>
     <div class="b">
       <p>Most recently<br>Senior product design manager<br>Docker · 2024–2026</p>
-      <p>Neighborland · Wikia · Nokia<br>DigitalOcean · Facebook · Docker</p>
+      <p>Facebook<br>DigitalOcean<br>Nokia<br>Wikia<br>Neighborland</p>
     </div>
     <div class="c">
       <nav aria-label="Sections"><a href="#about">About</a><a href="#career">Career</a><a href="#work">Work</a><a href="#hello">Contact</a><a href="resume.html">Resume</a></nav>
@@ -322,7 +349,7 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
   <div id="view-home" class="view">
   <section class="lab" aria-label="Earl Carlson, product design leader">
     <div class="lab-grid">
-      <h1 class="lab-name bleed"><span>Earl</span><span>Carlson</span></h1>
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="er1" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation="0.9" result="b"/><feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="3" seed="20" result="s"/><feColorMatrix in="s" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -8.3 6.64" result="h"/><feComposite in="b" in2="h" operator="in" result="e"/><feComponentTransfer in="e"><feFuncA type="linear" slope="1.25" intercept="0"/></feComponentTransfer></filter><filter id="er2" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation="1.6" result="b"/><feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="3" seed="22" result="s"/><feColorMatrix in="s" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -8.3 6.3" result="h"/><feComposite in="b" in2="h" operator="in" result="e"/><feComponentTransfer in="e"><feFuncA type="linear" slope="1.25" intercept="0"/></feComponentTransfer></filter><filter id="er3" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="8" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation="2.6" result="b"/><feTurbulence type="fractalNoise" baseFrequency="0.07" numOctaves="3" seed="25" result="s"/><feColorMatrix in="s" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -8.3 6.0" result="h"/><feComposite in="b" in2="h" operator="in" result="e"/><feComponentTransfer in="e"><feFuncA type="linear" slope="1.25" intercept="0"/></feComponentTransfer></filter></svg><h1 class="lab-name bleed" aria-label="Earl Carlson"><span>Earl</span><span>Carl<i class="er er1">s</i><i class="er er2">o</i><i class="er er3">n</i></span></h1>
       <figure class="lab-fig">
         <svg class="blob" viewBox="0 0 400 300" aria-hidden="true">
           <defs><filter id="goo" x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="16"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 34 -14"/></filter></defs>
@@ -766,7 +793,7 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
 
   <footer class="typed type">
     <div class="a"><p>Earl Carlson<br>Ann Arbor, MI · 42.28° N, 83.74° W</p></div>
-    <div class="b"><p>Lab report · Draft v0.7<br>© 2026</p></div>
+    <div class="b"><p>Lab report · Draft v0.8<br>© 2026</p></div>
     <div class="c"><nav aria-label="Footer"><a href="#top">Back to top ↑</a></nav></div>
   </footer>
 </div>
