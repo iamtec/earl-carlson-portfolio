@@ -342,6 +342,48 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
   .plate.pl-1, .plate.pl-2, .plate.pl-3, .plate.pl-4 { grid-column: 1 / 13; margin-top: 0; align-self: start; }
   .pl-2 .stand-in { aspect-ratio: 4 / 3; }
 }
+
+/* v0.11 */
+/* a little of the n's wobble across the whole name, at rest */
+[data-smudge].lab-name { filter: url(#wavebleed); }
+
+/* pink under HELLO: a plain marker band at rest; the ink shape only takes over while the pointer is on it */
+.mk-ink::before { content: ""; position: absolute; left: 0; right: 0; bottom: .05em; height: .2em; background: var(--stamp); z-index: -1; transition: opacity .25s; }
+.pinkblob { opacity: 0; transition: opacity .25s; }
+.mk-ink.inking .pinkblob { opacity: 1; }
+.mk-ink.inking::before { opacity: 0; }
+
+/* selected work: one case per row, image and caption alternating sides */
+.plates { row-gap: clamp(96px, 12vw, 180px); padding-top: clamp(10px, 2vw, 30px); }
+.plate.pl-1, .plate.pl-2, .plate.pl-3, .plate.pl-4 {
+  grid-column: 1 / 13; margin: 0; align-self: auto;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 0; align-items: end;
+}
+.plate .plate-fig { grid-column: 1 / 9; grid-row: 1; margin-right: 14px; }
+.plate .plate-cap { grid-column: 9 / 13; grid-row: 1; margin: 0 14px 0 0; }
+.plate.pl-2 .plate-fig, .plate.pl-4 .plate-fig { grid-column: 5 / 13; margin-right: 0; }
+.plate.pl-2 .plate-cap, .plate.pl-4 .plate-cap { grid-column: 1 / 5; }
+.plate .plate-fig img, .plate.pl-2 .stand-in { aspect-ratio: 16 / 10; }
+.plate.pl-3 .plate-fig img { object-position: 50% 4%; }
+.plate h3 { font-size: clamp(36px, 3.9vw, 62px); margin-top: 18px; }
+.plate .thesis { margin-top: 14px; }
+.keyline { margin-top: 22px; }
+.plate .go { margin-top: 20px; }
+
+/* more vertical room between and inside sheets */
+.sec { margin-top: clamp(96px, 11vw, 180px); }
+.sec-head { margin-bottom: clamp(36px, 5vw, 76px); }
+.bring li { padding-block: 26px 36px; }
+.statement .sub { margin-top: clamp(30px, 4vw, 54px); }
+.lab-meta { margin-top: clamp(40px, 5vw, 70px); }
+.lab-sub { margin-top: 26px; }
+
+@media (max-width: 820px) {
+  .plate.pl-1, .plate.pl-2, .plate.pl-3, .plate.pl-4 { display: block; }
+  .plate .plate-fig, .plate.pl-2 .plate-fig, .plate.pl-4 .plate-fig { margin-right: 0; }
+  .plate .plate-cap, .plate.pl-2 .plate-cap, .plate.pl-4 .plate-cap { margin: 14px 0 0; }
+  .plates { row-gap: 72px; }
+}
 </style>
 
 <style>[hidden]{display:none!important}img{max-width:100%}</style>
@@ -371,7 +413,7 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
     </div>
     <div class="b">
       <p>Most recently<br>Senior product design manager<br>Docker · 2024–2026</p>
-      <p>Facebook<br>DigitalOcean<br>Nokia<br>Wikia<br>Neighborland</p>
+      <p>Facebook · DigitalOcean · Nokia · Wikia · Neighborland</p>
     </div>
     <div class="c">
       <nav aria-label="Sections"><a href="#about">About</a><a href="#work">Work</a><a href="#career">Career</a><a href="#hello">Contact</a><a href="resume.html">Resume</a></nav>
@@ -381,7 +423,7 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
   <div id="view-home" class="view">
   <section class="lab" aria-label="Earl Carlson, product design leader">
     <div class="lab-grid">
-      <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="er1" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation="0.9" result="b"/><feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="3" seed="20" result="s"/><feColorMatrix in="s" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -8.3 6.64" result="h"/><feComponentTransfer in="b" result="c"><feFuncA type="linear" slope="1.25" intercept="0"/></feComponentTransfer><feComponentTransfer in="h" result="h2"><feFuncA type="linear" slope="0.03" intercept="0.97"/></feComponentTransfer><feComposite in="c" in2="h2" operator="in"/></filter><filter id="er2" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation="1.6" result="b"/><feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="3" seed="22" result="s"/><feColorMatrix in="s" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -8.3 6.3" result="h"/><feComponentTransfer in="b" result="c"><feFuncA type="linear" slope="1.25" intercept="0"/></feComponentTransfer><feComponentTransfer in="h" result="h2"><feFuncA type="linear" slope="0.03" intercept="0.97"/></feComponentTransfer><feComposite in="c" in2="h2" operator="in"/></filter><filter id="er3" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="8" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation="2.6" result="b"/><feTurbulence type="fractalNoise" baseFrequency="0.07" numOctaves="3" seed="25" result="s"/><feColorMatrix in="s" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -8.3 6.0" result="h"/><feComponentTransfer in="b" result="c"><feFuncA type="linear" slope="1.25" intercept="0"/></feComponentTransfer><feComponentTransfer in="h" result="h2"><feFuncA type="linear" slope="0.03" intercept="0.97"/></feComponentTransfer><feComposite in="c" in2="h2" operator="in"/></filter></svg><h1 class="lab-name bleed" aria-label="Earl Carlson" data-smudge><span>Earl</span><span>Carl<i class="er er1">s</i><i class="er er2">o</i><i class="er er3">n</i></span></h1>
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="wavebleed" x="-5%" y="-15%" width="110%" height="130%"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.03" numOctaves="2" seed="4" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="6" xChannelSelector="R" yChannelSelector="G" result="wv"/><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="7" result="noise"/><feDisplacementMap in="wv" in2="noise" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation="0.7" result="b"/><feComponentTransfer in="b"><feFuncA type="linear" slope="1.7" intercept="-0.15"/></feComponentTransfer></filter><filter id="er1" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation="0.9" result="b"/><feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="3" seed="20" result="s"/><feColorMatrix in="s" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -8.3 6.64" result="h"/><feComponentTransfer in="b" result="c"><feFuncA type="linear" slope="1.25" intercept="0"/></feComponentTransfer><feComponentTransfer in="h" result="h2"><feFuncA type="linear" slope="0.03" intercept="0.97"/></feComponentTransfer><feComposite in="c" in2="h2" operator="in"/></filter><filter id="er2" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation="1.6" result="b"/><feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="3" seed="22" result="s"/><feColorMatrix in="s" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -8.3 6.3" result="h"/><feComponentTransfer in="b" result="c"><feFuncA type="linear" slope="1.25" intercept="0"/></feComponentTransfer><feComponentTransfer in="h" result="h2"><feFuncA type="linear" slope="0.03" intercept="0.97"/></feComponentTransfer><feComposite in="c" in2="h2" operator="in"/></filter><filter id="er3" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="8" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation="2.6" result="b"/><feTurbulence type="fractalNoise" baseFrequency="0.07" numOctaves="3" seed="25" result="s"/><feColorMatrix in="s" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -8.3 6.0" result="h"/><feComponentTransfer in="b" result="c"><feFuncA type="linear" slope="1.25" intercept="0"/></feComponentTransfer><feComponentTransfer in="h" result="h2"><feFuncA type="linear" slope="0.03" intercept="0.97"/></feComponentTransfer><feComposite in="c" in2="h2" operator="in"/></filter></svg><h1 class="lab-name bleed" aria-label="Earl Carlson" data-smudge><span>Earl</span><span>Carl<i class="er er1">s</i><i class="er er2">o</i><i class="er er3">n</i></span></h1>
       <figure class="lab-fig">
         <svg class="blob" data-ink viewBox="0 0 400 300" aria-hidden="true">
           <defs><filter id="goo" x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="16"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 34 -14"/></filter></defs>
@@ -830,7 +872,7 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
 
   <footer class="typed type">
     <div class="a"><p>Earl Carlson<br>Ann Arbor, MI · 42.28° N, 83.74° W</p></div>
-    <div class="b"><p>Lab report · Draft v0.10<br>© 2026</p></div>
+    <div class="b"><p>Lab report · Draft v0.11<br>© 2026</p></div>
     <div class="c"><nav aria-label="Footer"><a href="#top">Back to top ↑</a></nav></div>
   </footer>
 </div>
@@ -935,9 +977,9 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
         d.el.setAttribute("cx", d.x.toFixed(2)); d.el.setAttribute("cy", d.y.toFixed(2)); d.el.setAttribute("r", (d.r * d.s).toFixed(2));
         if (Math.abs(d.vx) + Math.abs(d.vy) > 0.02 || Math.abs(d.x - d.rx) + Math.abs(d.y - d.ry) > 0.05 || Math.abs(d.vs) > 0.001) moving = true;
       });
-      if (moving || p) requestAnimationFrame(step); else running = false;
+      if (moving || p) requestAnimationFrame(step); else { running = false; svg.parentElement.classList.remove("inking"); }
     }
-    function kick() { if (!running) { running = true; requestAnimationFrame(step); } }
+    function kick() { if (!running) { running = true; svg.parentElement.classList.add("inking"); requestAnimationFrame(step); } }
     window.addEventListener("pointermove", function (e) {
       if (hiddenView(svg)) return;
       var q = toSvg(e);
@@ -981,7 +1023,6 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
         var t = Math.max(0, L.t);
         L.tx = dx / dist * PUSHPX * t; L.ty = dy / dist * PUSHPX * t;
         L.el.style.filter = L.base + "blur(" + (MAXB * t).toFixed(2) + "px)";
-        L.el.style.transform = t > 0.001 ? "translate(" + L.tx.toFixed(2) + "px," + L.ty.toFixed(2) + "px)" : "";
         if (Math.abs(L.vt) > 0.001 || L.t > 0.002) moving = true;
       });
       if (moving || p) requestAnimationFrame(step);
