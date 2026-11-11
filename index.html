@@ -391,6 +391,10 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
 .plate.pl-2 .plate-fig, .plate.pl-4 .plate-fig { grid-column: 8 / 13; }
 .plate.pl-2 .plate-cap, .plate.pl-4 .plate-cap { grid-column: 3 / 7; }
 .plates { row-gap: clamp(80px, 10vw, 150px); }
+
+/* v0.13: the liquid ink band under HELLO is always on (no plain rectangle) */
+.mk-ink::before { display: none; }
+.pinkblob, .mk-ink.inking .pinkblob { opacity: 1; }
 </style>
 
 <style>[hidden]{display:none!important}img{max-width:100%}</style>
@@ -539,7 +543,7 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
 
   <section class="sec close" id="hello" aria-label="Contact">
     <div class="sec-head type"><span>Contact</span><span class="gray">Sheet 05</span></div>
-    <h2 class="bleed" aria-label="Say hello" data-smudge>(SAY <span class="mk-ink">HELLO</span>)</h2>
+    <h2 class="bleed" aria-label="Say hello" data-smudge>(SAY <span class="mk-ink"><svg class="pinkblob" data-ink data-push="6" data-reach="60" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true"><defs><filter id="goo-pink" x="-10%" y="-60%" width="120%" height="220%"><feGaussianBlur stdDeviation="9"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 30 -12"/></filter></defs><g filter="url(#goo-pink)" fill="#f0507a"><circle cx="12" cy="31" r="16"/><circle cx="34" cy="33" r="18"/><circle cx="56" cy="32" r="20"/><circle cx="78" cy="31" r="17"/><circle cx="100" cy="33" r="19"/><circle cx="122" cy="32" r="16"/><circle cx="144" cy="31" r="18"/><circle cx="166" cy="33" r="20"/><circle cx="188" cy="32" r="17"/><circle cx="210" cy="31" r="19"/><circle cx="232" cy="33" r="16"/><circle cx="254" cy="32" r="18"/><circle cx="276" cy="31" r="20"/><circle cx="298" cy="33" r="17"/><circle cx="320" cy="32" r="19"/><circle cx="342" cy="31" r="16"/><circle cx="364" cy="33" r="18"/><circle cx="386" cy="32" r="20"/><circle cx="408" cy="31" r="17"/><circle cx="430" cy="33" r="19"/><circle cx="452" cy="32" r="16"/><circle cx="474" cy="31" r="18"/><circle cx="496" cy="33" r="20"/><circle cx="518" cy="32" r="17"/><circle cx="540" cy="31" r="19"/><circle cx="562" cy="33" r="16"/><circle cx="584" cy="32" r="18"/></g></svg>HELLO</span>)</h2>
     <p class="type contact-line"><a href="mailto:hi@earlc.com">hi@earlc.com</a> · <a href="https://earlc.com">earlc.com</a> · <a href="resume.html">Resume</a></p>
   </section>
 
@@ -879,7 +883,7 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
 
   <footer class="typed type">
     <div class="a"><p>Earl Carlson<br>Ann Arbor, MI · 42.28° N, 83.74° W</p></div>
-    <div class="b"><p>Lab report · Draft v0.12<br>© 2026</p></div>
+    <div class="b"><p>Lab report · Draft v0.13<br>© 2026</p></div>
     <div class="c"><nav aria-label="Footer"><a href="#top">Back to top ↑</a></nav></div>
   </footer>
 </div>
