@@ -1067,8 +1067,8 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
     document.addEventListener("pointerleave", function () { p = null; kick(); });
   });
 
-  // portrait (.lab-fig img): near the pointer the picture and its frame are pushed away like ink and thin out to the
-  // paper behind, then spring back. Drawn with WebGL over the framed image; if WebGL or the texture is unavailable
+  // portrait (.lab-fig img): near the pointer the picture and its frame are pushed away like ink (always fully
+  // opaque), then spring back. Drawn with WebGL over the framed image; if WebGL or the texture is unavailable
   // (e.g. opened from file://) the plain image stays.
   (function () {
     var img = document.querySelector(".lab-fig img");
@@ -1097,9 +1097,7 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
       "  float inFrame = clamp(box(Q, fr) + .5, 0., 1.), inImg = clamp(box(Q, ct) + .5, 0., 1.);",
       "  vec3 pic = texture2D(t, clamp((Q - ct.xy) / (ct.zw - ct.xy) * sc + of, 0., 1.)).rgb;",
       "  vec3 col = mix(panel, pic, inImg);",
-      "  float g = fbm(P / R * 7. + tm * .5) - .5;",
-      "  float thin = smoothstep(.45, .92, fa + (w * .7 + g * .8) * fa);",
-      "  gl_FragColor = vec4(col, inFrame * (1. - thin * .75));",
+      "  gl_FragColor = vec4(col, inFrame);",
       "}"].join("\n");
     function sh(type, src) { var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null; }
     var vsh = sh(gl.VERTEX_SHADER, vs), fsh = sh(gl.FRAGMENT_SHADER, fs);
