@@ -100,6 +100,24 @@ footer.end { margin-top: 34px; display: flex; justify-content: space-between; al
   .job li { margin-top: 1.5pt; break-inside: avoid; }
   .summary p, .job .intro, .job ul { max-width: none; }
 }
+
+/* ===== type system: the same five styles as the site (index.html, v0.16) =====
+   Headline: the name. Lead: tagline, job titles. Body: paragraphs, bullets.
+   Label: contact, dates, section heads, flags, bar, footer. (Display is too big for the sheet.) */
+header.top h1 { font-size: clamp(34px, 5.6vw, 56px); font-weight: 500; letter-spacing: -0.035em; line-height: .95; font-variation-settings: "wdth" 88; }
+header.top .headline, .job h3, .job h3 .role { font-size: clamp(19px, 2.4vw, 23px); font-weight: 500; letter-spacing: -0.01em; line-height: 1.25; }
+.job h3 .role { color: var(--gray); }
+body, .summary p, .job .intro, .job li { font-size: 17px; font-weight: 400; letter-spacing: 0; line-height: 1.45; }
+.bar, header.top .contact, h2, .dates, .flag, footer.end {
+  font-family: var(--font-type); font-size: 13px; font-weight: 400; text-transform: uppercase; letter-spacing: .02em; line-height: 1.3;
+}
+@media print {
+  header.top h1 { font-size: 26pt; }
+  header.top .headline, .job h3, .job h3 .role { font-size: 12pt; }
+  .job h3 .role { color: #555; }
+  body, .summary p, .job .intro, .job li { font-size: 9.6pt; line-height: 1.32; }
+  header.top .contact, h2, .dates { font-size: 9pt; }
+}
 </style>
 
 <style>[hidden]{display:none!important}img{max-width:100%}</style>

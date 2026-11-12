@@ -16,7 +16,7 @@ Fonts load from Google Fonts (Archivo, Courier Prime).
 
 ## Run locally
 
-Serve the folder (the portrait's ink effect uses WebGL, which can't read images from `file://`, so opening `index.html` directly shows a still portrait):
+Open `index.html` in a browser, or serve the folder:
 
 ```sh
 python3 -m http.server 8000
@@ -28,6 +28,7 @@ python3 -m http.server 8000
 - Facebook case: research participants' faces are shown. Confirm consent.
 - Docker case: names a colleague (Sean Brady) and internal personas.
 - DigitalOcean case: hero image is still a stand-in.
+- Docker case: draft copy is marked `class="guess"` (dashed pink underline). Confirm or rewrite each, then remove the class. Nine image stand-ins still need real images.
 
 ## Regenerating the resume PDF
 
