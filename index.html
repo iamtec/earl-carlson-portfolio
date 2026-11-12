@@ -395,6 +395,16 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
 /* v0.13: the liquid ink band under HELLO is always on (no plain rectangle) */
 .mk-ink::before { display: none; }
 .pinkblob, .mk-ink.inking .pinkblob { opacity: 1; }
+
+/* v0.14: comment fixes */
+.sec-head { color: var(--gray); }
+.plate h3.bleed { filter: url(#bleed-soft); }
+.plate .plate-fig { margin-right: 0; }
+.stats .bar.s { background: repeating-linear-gradient(135deg, var(--ink) 0 1.5px, transparent 1.5px 5px); border: 1.5px solid var(--ink); }
+@media (max-width: 820px) { .hide-m { display: none !important; } }
+.ink-portrait { position: absolute; z-index: 2; pointer-events: none; opacity: 0; display: block; }
+.lab-fig.ink-live .ink-portrait { opacity: 1; }
+.lab-fig.ink-live img { visibility: hidden; }
 </style>
 
 <style>[hidden]{display:none!important}img{max-width:100%}</style>
@@ -406,6 +416,12 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
     <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="d"/>
     <feGaussianBlur in="d" stdDeviation="0.7" result="b"/>
     <feComponentTransfer in="b"><feFuncA type="linear" slope="1.7" intercept="-0.15"/></feComponentTransfer>
+  </filter>
+  <filter id="bleed-soft" x="-5%" y="-10%" width="110%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="7" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.8" xChannelSelector="R" yChannelSelector="G" result="d"/>
+    <feGaussianBlur in="d" stdDeviation="0.4" result="b"/>
+    <feComponentTransfer in="b"><feFuncA type="linear" slope="1.5" intercept="-0.1"/></feComponentTransfer>
   </filter>
   <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
     <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="4" result="t"/>
@@ -420,13 +436,13 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
   <header class="typed type">
     <div class="a">
       <p>Earl Carlson<br>Product design leader<br>Ann Arbor, MI · Remote</p>
-      <p>Portfolio<br>Est. 2010</p>
+      <p class="hide-m">Portfolio<br>Est. 2010</p>
     </div>
     <div class="b">
       <p>Most recently<br>Senior product design manager<br>Docker · 2024–2026</p>
       <p>Facebook · DigitalOcean · Nokia · Wikia · Neighborland</p>
     </div>
-    <div class="c">
+    <div class="c hide-m">
       <nav aria-label="Sections"><a href="#about">About</a><a href="#work">Work</a><a href="#career">Career</a><a href="#hello">Contact</a><a href="resume.html">Resume</a></nav>
     </div>
   </header>
@@ -450,7 +466,7 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
         <div><span class="gray">Most recent</span><b>Docker · 2024–26</b></div>
       </div>
       <div class="lab-sub">
-        <span class="type bleed">→ Selected work, 2010–2026</span>
+        <span class="type gray">→ Selected work, 2010–2026</span>
         <span class="type gray">Prod : 11/11/2026</span>
         <svg class="barcode" id="barcode" viewBox="0 0 320 34" preserveAspectRatio="none" aria-hidden="true"></svg>
       </div>
@@ -508,7 +524,7 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
       <a class="plate pl-3" href="#facebook">
         <figure class="plate-fig"><img class="print" alt="Grid of nine research participants photographed during sessions in India" src="assets/fb-research.jpg"></figure>
         <div class="plate-cap">
-          <div class="cap-row type"><span>Fig. 4 — Case D-03</span><span>2017–18</span></div>
+          <div class="cap-row type"><span>Fig. 4 — Case D-03</span><span>2017–19</span></div>
           <h3 class="bleed">Facebook</h3>
           <p class="thesis">Making credibility visible.</p>
           <div class="keyline"><span class="type gray">Key result</span><b>25 fact-checking partners, 14 countries</b></div>
@@ -535,7 +551,7 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
         <caption>Summary Career Statistics</caption>
         <thead><tr><th scope="col">Company</th><th scope="col">Years</th><th scope="col" style="text-align:right">Duration</th><th scope="col"><div class="axis"><span>2010</span><span>2014</span><span>2018</span><span>2022</span><span>2026</span></div></th></tr></thead>
         <tbody id="stats-body"></tbody>
-        <tfoot><tr><td>Total</td><td>2010–2026</td><td class="num" id="stats-total"></td><td class="type gray" style="font-weight:400">Approximate, from the deck. Gaps shown as gaps.</td></tr></tfoot>
+        <tfoot><tr><td>Total</td><td>2010–2026</td><td class="num" id="stats-total"></td><td></td></tr></tfoot>
       </table>
     </div>
     <div class="fig"><span class="type gray">Fig. 2</span><p>From connected hardware and consumer products to global platforms and emerging technology.</p></div>
@@ -747,7 +763,7 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
       <div class="lab-meta type">
         <div><span class="gray">Case no.</span><b>D-03</b></div>
         <div><span class="gray">Area</span><b>News credibility</b></div>
-        <div><span class="gray">Years</span><b>2017–2018</b></div>
+        <div><span class="gray">Years</span><b>2017–2019</b></div>
         <div><span class="gray">Sheets</span><b>3</b></div>
       </div>
     </div>
@@ -895,7 +911,8 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
     ["Wikia", "2013–14", [[2013, 2014]]],
     ["Nokia", "2014–15", [[2014, 2015]]],
     ["DigitalOcean", "2015–17 · 2019–22", [[2015, 2017], [2019, 2022]]],
-    ["Facebook", "2017–18", [[2017, 2018]]],
+    ["Facebook", "2017–19", [[2017, 2019]]],
+    ["Creative sabbatical", "2022–24", [[2022, 2024]], "s"],
     ["Docker", "2024–26", [[2024, 2026]]]
   ];
   var A = 2010, B = 2026, body = document.getElementById("stats-body"), total = 0;
@@ -906,13 +923,14 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
     td(j[0]); td(j[1]); td(yrs + (yrs === 1 ? " yr" : " yrs"), "num");
     var cell = td(""), track = document.createElement("div"); track.className = "track";
     j[2].forEach(function (p, i) {
-      var b = document.createElement("div"); b.className = "bar" + (i ? " o" : "");
+      var b = document.createElement("div"); b.className = "bar" + (j[3] ? " " + j[3] : "");
       b.style.left = ((p[0] - A) / (B - A) * 100) + "%"; b.style.width = ((p[1] - p[0]) / (B - A) * 100) + "%";
       track.appendChild(b);
     });
     cell.appendChild(track); body.appendChild(tr);
   });
-  document.getElementById("stats-total").textContent = total + " yrs";
+  // total is the span of the career, 2010 to 2026, now that the sabbatical accounts for the long gap
+  document.getElementById("stats-total").textContent = (B - A) + " yrs";
 
   // barcode, generated from the name so it is stable
   var svg = document.getElementById("barcode"), s = "EARLCARLSON20261111", x = 0, ns = "http://www.w3.org/2000/svg";
@@ -1048,6 +1066,106 @@ table.stats.lv-table, table.stats.outcomes { min-width: 0; }
     }, { passive: true });
     document.addEventListener("pointerleave", function () { p = null; kick(); });
   });
+
+  // portrait (.lab-fig img): near the pointer the picture and its frame are pushed away like ink and thin out to the
+  // paper behind, then spring back. Drawn with WebGL over the framed image; if WebGL or the texture is unavailable
+  // (e.g. opened from file://) the plain image stays.
+  (function () {
+    var img = document.querySelector(".lab-fig img");
+    if (!img) return;
+    var fig = img.parentElement, cv = document.createElement("canvas");
+    cv.className = "ink-portrait"; cv.setAttribute("aria-hidden", "true");
+    var gl = cv.getContext("webgl", { premultipliedAlpha: false, antialias: false, alpha: true });
+    if (!gl) return;
+    var vs = "attribute vec2 p; varying vec2 v; void main(){ v = vec2(p.x * .5 + .5, .5 - p.y * .5); gl_Position = vec4(p, 0., 1.); }";
+    var fs = [
+      "precision mediump float;",
+      "varying vec2 v; uniform sampler2D t;",
+      "uniform vec2 sz, sc, of, m; uniform vec4 fr, ct; uniform vec3 panel; uniform float a, tm, R;",
+      "float h(vec2 q){ return fract(sin(dot(q, vec2(127.1, 311.7))) * 43758.5453); }",
+      "float n(vec2 q){ vec2 i = floor(q), f = fract(q); f = f * f * (3. - 2. * f);",
+      "  return mix(mix(h(i), h(i + vec2(1., 0.)), f.x), mix(h(i + vec2(0., 1.)), h(i + 1.), f.x), f.y); }",
+      "float fbm(vec2 q){ float s = 0., k = .5; for (int i = 0; i < 4; i++) { s += k * n(q); q = q * 2.03 + 1.7; k *= .5; } return s; }",
+      "float box(vec2 q, vec4 b){ return min(min(q.x - b.x, b.z - q.x), min(q.y - b.y, b.w - q.y)); }",
+      "void main(){",
+      "  vec2 P = v * sz, d = P - m; float r = length(d);",
+      "  float f = smoothstep(R, 0., r); f *= f; float fa = f * a;",
+      "  vec2 q = P / R * 2.5;",
+      "  float w = fbm(q + tm * .35) - .5, w2 = fbm(q + 7.3 - tm * .3) - .5;",
+      "  vec2 dir = r > .5 ? d / r : vec2(0.);",
+      "  vec2 Q = P - (dir * .2 + vec2(w, w2) * .17) * R * fa;",
+      "  float inFrame = clamp(box(Q, fr) + .5, 0., 1.), inImg = clamp(box(Q, ct) + .5, 0., 1.);",
+      "  vec3 pic = texture2D(t, clamp((Q - ct.xy) / (ct.zw - ct.xy) * sc + of, 0., 1.)).rgb;",
+      "  vec3 col = mix(panel, pic, inImg);",
+      "  float g = fbm(P / R * 7. + tm * .5) - .5;",
+      "  float thin = smoothstep(.45, .92, fa + (w * .7 + g * .8) * fa);",
+      "  gl_FragColor = vec4(col, inFrame * (1. - thin * .75));",
+      "}"].join("\n");
+    function sh(type, src) { var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null; }
+    var vsh = sh(gl.VERTEX_SHADER, vs), fsh = sh(gl.FRAGMENT_SHADER, fs);
+    if (!vsh || !fsh) return;
+    var prog = gl.createProgram(); gl.attachShader(prog, vsh); gl.attachShader(prog, fsh); gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+    gl.useProgram(prog);
+    var buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+    var loc = gl.getAttribLocation(prog, "p"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    var U = {}; ["t", "sz", "sc", "of", "m", "fr", "ct", "panel", "a", "tm", "R"].forEach(function (k) { U[k] = gl.getUniformLocation(prog, k); });
+    var tex = gl.createTexture(), ready = false, M = 0, ox = 0, oy = 0;
+    function upload() {
+      try {
+        gl.bindTexture(gl.TEXTURE_2D, tex);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
+        ready = true; fig.appendChild(cv); layout();
+      } catch (err) { ready = false; }
+    }
+    function layout() {
+      if (!ready) return;
+      var W = img.offsetWidth, H = img.offsetHeight, bl = img.clientLeft, bt = img.clientTop, cw = img.clientWidth, ch = img.clientHeight;
+      if (!W || !H) return;
+      M = Math.round(W * 0.12); ox = img.offsetLeft - M; oy = img.offsetTop - M;
+      var cssW = W + 2 * M, cssH = H + 2 * M, dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cv.style.left = ox + "px"; cv.style.top = oy + "px"; cv.style.width = cssW + "px"; cv.style.height = cssH + "px";
+      cv.width = Math.round(cssW * dpr); cv.height = Math.round(cssH * dpr);
+      cv.style.filter = getComputedStyle(img).filter;
+      gl.viewport(0, 0, cv.width, cv.height);
+      gl.uniform2f(U.sz, cssW, cssH);
+      gl.uniform4f(U.fr, M, M, M + W, M + H);
+      gl.uniform4f(U.ct, M + bl, M + bt, M + bl + cw, M + bt + ch);
+      var pc = getComputedStyle(img).borderTopColor.match(/[\d.]+/g) || [38, 37, 35];
+      gl.uniform3f(U.panel, pc[0] / 255, pc[1] / 255, pc[2] / 255);
+      // object-fit: cover with object-position 50% 30%, same as the image
+      var iw = img.naturalWidth, ih = img.naturalHeight, s = Math.max(cw / iw, ch / ih), dw = iw * s, dh = ih * s;
+      gl.uniform2f(U.sc, cw / dw, ch / dh); gl.uniform2f(U.of, (dw - cw) * 0.5 / dw, (dh - ch) * 0.3 / dh);
+      gl.uniform1f(U.R, ch * 0.34); gl.uniform1i(U.t, 0);
+    }
+    if (img.complete && img.naturalWidth) upload(); else img.addEventListener("load", upload);
+    var t0 = performance.now(), amt = 0, va = 0, mx = 0, my = 0, tx = 0, ty = 0, inside = false, running = false;
+    function render() {
+      gl.uniform2f(U.m, mx, my); gl.uniform1f(U.a, Math.max(0, amt)); gl.uniform1f(U.tm, (performance.now() - t0) / 1000);
+      gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    }
+    function step() {
+      va = (va + ((inside ? 1 : 0) - amt) * 0.1) * 0.74; amt += va;
+      mx += (tx - mx) * 0.22; my += (ty - my) * 0.22;
+      render();
+      if (inside || Math.abs(va) > 0.0005 || Math.abs(amt) > 0.003) requestAnimationFrame(step);
+      else { running = false; amt = 0; va = 0; render(); fig.classList.remove("ink-live"); }
+    }
+    function kick() { if (!running && ready) { running = true; render(); fig.classList.add("ink-live"); requestAnimationFrame(step); } }
+    window.addEventListener("pointermove", function (e) {
+      if (!ready || hiddenView(fig)) return;
+      var r = img.getBoundingClientRect(), pad = r.width * 0.12;
+      var near = e.clientX > r.left - pad && e.clientX < r.right + pad && e.clientY > r.top - pad && e.clientY < r.bottom + pad;
+      if (near) { tx = e.clientX - r.left + M; ty = e.clientY - r.top + M; if (!inside) { mx = tx; my = ty; } inside = true; kick(); }
+      else if (inside) { inside = false; kick(); }
+    }, { passive: true });
+    document.addEventListener("pointerleave", function () { inside = false; kick(); });
+    var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(layout, 120); });
+    window.addEventListener("hashchange", function () { setTimeout(layout, 50); });
+  })();
 })();
 </script>
 
